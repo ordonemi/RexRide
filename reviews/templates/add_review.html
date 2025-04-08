@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Review</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navigation.html' %}
+    {% include 'messages.html' %}
+    <div class="content">
+        <h1>Add Review for {{ reviewed_user.name }}</h1>
+        <p><strong>Ride:</strong>{{ride.departure_city.name}} to {{ride.destination_city.name}}</p>
+
+        <form method="post" class="mb-4">
+            {% csrf_token %}
+            <fieldset id="review-form">
+            <div>
+                <label for="id_rating" class="form-label">Rating</label>
+                <select name="rating" id="id_rating" class="form-select">
+                    <option value="1">1 ★</option>
+                    <option value="2">2 ★★</option>
+                    <option value="3">3 ★★★</option>
+                    <option value="4">4 ★★★★</option>
+                    <option value="5">5 ★★★★★</option>
+                </select>
+            </div>
+            <div>
+                <label for="id_comment">Comment</label>
+                {{ form.comment }}
+            </div>
+            <div id="review-buttons">
+            <button type="submit">Submit Review</button>
+            <button type="button" onclick="window.history.back();">Cancel</button>
+            <div>
+            </fieldset>
+        </form>
+
+        <a href="{% url 'view_trip_history' %}">Back to Trip History</a>
+    </div>
+</body>
+</html>

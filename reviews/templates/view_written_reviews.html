@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews Written</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navigation.html' %}
+    {% include 'messages.html' %}
+    <div class="content">
+    <h1>Reviews You’ve Written</h1>
+    <ul id="written-reviews">
+        {% for review in written_reviews %}
+        <li>
+            <strong>Reviewed User:</strong> {{ review.reviewed_user.name }}<br>
+            <strong>Rating:</strong> {{ review.rating }} ★<br>
+            <strong>Comment:</strong> {{ review.comment }}<br>
+            <strong>Date:</strong> {{ review.created_at|date:"M d, Y" }}
+        </li>
+        {% empty %} 
+        <li>No reviews written yet.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'profile' %}" class="btn">Back to Profile</a>
+    </div>
+</body>
+</html>

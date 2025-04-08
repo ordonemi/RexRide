@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Booking Requests</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navigation.html' %}
+    {% include 'messages.html' %}
+    <div class="content">
+        <div id="pending-requests">
+            <h1>Pending Booking Requests</h1>
+            <ul>
+                {% for request in pending_requests %}
+                <li>
+                    <p><strong>Passenger:</strong> {{ request.user.name }}</p>
+                    <p><strong>Ride:</strong> {{ request.post.departure_city.name }} to {{ request.post.destination_city.name }}</p>
+                    <p><strong>Requested Date:</strong> {{ request.trip_date }}</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                        <input type="hidden" name="request_id" value="{{ request.id }}">
+                        <button type="submit" name="action" value="approve">Approve</button>
+                        <button type="submit" name="action" value="reject">Reject</button>
+                        </fieldset>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div id="complete-rides">
+            <h1>Mark Ride as Complete</h1>
+            <ul>
+                {% for ride in driver_rides %}
+                <li>
+                    <p><strong>Ride:</strong> {{ ride.post.departure_city.name }} to {{ ride.post.destination_city.name }}</p>
+                    <p><strong>Date:</strong> {{ ride.trip_date }}</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                        <input type="hidden" name="ride_id" value="{{ ride.id }}">
+                        <button type="submit" name="action" value="complete">Mark as Complete</button>
+                        </fieldset>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

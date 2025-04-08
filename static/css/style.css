@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Radley:ital@0;1&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*** Global Styles ***/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #EBE9E9;
+}
+
+h1, a, h2 {
+    font-family: 'Urbanist', sans-serif;
+    color: #3581B8;
+}
+
+p, label, input, li, ul, select, textarea {
+    font-family: "Radley", serif;
+}
+
+form button {
+    display: block;
+    font-family: 'Urbanist', sans-serif;
+    background-color: #3581B8;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: medium;
+    margin: 0 auto;
+}
+
+input {
+    padding: 0.2rem 0.4rem;
+    font-size: medium;
+    width: 30ch;
+}
+
+textarea {
+    padding: 0.2rem 0.4rem;;
+}
+
+.btn {
+    text-decoration: none;
+    border: solid 1px #3581B8;
+    padding: 0.1rem 0.6rem;
+}
+
+.btn:hover {
+    color: #FCB07E;
+    border: solid 1px #FCB07E;
+}
+
+.content {
+    margin: 1rem 0;
+    padding: 2rem 2rem;
+    text-align: center;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+table {
+    width: 90%;
+    margin: 3rem auto;
+    font-size: large;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #3581B8;
+    color: #EBE9E9;
+    font-family: 'Urbanist', sans-serif;
+}
+
+th {
+    padding: 1rem 1rem;
+    letter-spacing: 2px;
+    font-size: 20px;
+}
+
+tbody {
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: 'Radley', serif;
+}
+
+td {
+    padding: 1rem 1rem;
+}
+
+tbody tr:nth-child(odd) {
+    background-color:  #F3F8F2;
+  }
+  
+
+/*** Landing Page ***/
+#landing-page h1 {
+    margin: 20vh 2rem 1rem 2rem;
+    text-align: center;
+}
+
+#landing-page p {
+    text-align: center;
+}
+
+#call-to-action {
+    text-align: center;
+}
+
+#call-to-action h2 {
+    margin: 1rem;
+}
+
+#call-to-action p {
+    margin: 1rem;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
+
+/*** Login Page ***/
+#login-container {
+    width: 35%;
+    height: 50vh;
+    margin: 20vh auto; 
+    background-color: #F3F8F2;
+    padding: 1rem 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+#login-container h1 {
+    text-align: center;
+    margin: 2rem 0 1rem 0;
+}
+
+#login-container form {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 1rem 4rem;
+}
+
+#login-container p {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/*** Register Page ***/
+#register-container {
+    width: 35%;
+    height: 60vh;
+    margin: 15vh auto; 
+    background-color: #F3F8F2;
+    padding: 1rem 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+#register-container h1 {
+    text-align: center;
+    margin: 2rem 0 1rem 0;
+}
+
+#register-container form {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 1rem 4rem;
+}
+
+#register-container p {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/*** Header and Navigation Bar ***/
+header {
+    background-color: #3581B8;
+    width: 100%;
+}
+
+.navigation {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation a {
+    color: #EBE9E9;
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 22px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.navigation a:hover {
+    background-color: #EBE9E9;
+    color: #3581B8;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*** Home Page ***/
+#home-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 1rem auto;
+}
+
+#home-grid div {
+    margin: 1rem 0;
+    padding: 0.5rem 0.5rem;
+    line-height: 2rem;
+}
+
+/*** Post a Ride Page ***/
+#post-ride-form fieldset{
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-gap: 1rem;
+    padding: 1rem 2rem;
+    font-size: 19px;
+    width: fit-content;
+    text-align: center;
+    border: none;
+    margin: 0 auto;
+}
+
+#post-ride-form label {
+    text-align: right;
+}
+
+#post-ride-form label:after {
+    content: ":";
+}
+
+#post-ride-form select, textarea {
+    font-size: 19px;
+}
+
+#post-ride-form textarea {
+    height: 10rem;
+}
+
+#post-ride-form button {
+    margin: 0 auto;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+/*** View All Rides Page ***/
+#filter-form {
+    display: flex;
+    justify-content: left;
+    gap: 2rem;
+    margin: 1rem 0;
+    border: none;
+}
+
+#filter-form button {
+    display: inline;
+}
+
+/*** Manage Booking Requests Page ***/
+#pending-requests ul {
+    list-style-type: none;
+    padding: 1rem 1rem;
+    text-align: left;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#pending-requests fieldset{
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    border: none;
+    margin: 1rem auto;
+}
+
+#complete-rides ul {
+    list-style-type: none;
+    padding: 1rem 1rem;
+    text-align: left;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#complete-rides fieldset{
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    border: none;
+    margin: 1rem auto;
+}
+
+#complete-rides {
+    margin: 2rem 0;
+}
+
+/*** Profile Page ***/
+#profile-info {
+    font-size: large;
+    width: fit-content;
+    padding: 1rem 1rem;
+    margin: 0 auto;
+}
+
+
+#profile-info p {
+    line-height: 3rem;
+}
+
+#user-actions ul {
+    list-style-type: none;
+    padding: 1rem 1rem;
+}
+
+#user-actions {
+    margin: 1rem 0;
+}
+
+/*** Ride Details Page ***/
+
+#ride-details {
+    border: solid 1px #3581B8;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: left;
+    padding: 1rem 1rem;
+    line-height: 2rem;
+}
+
+/*** Reviews Page ***/
+#reviews {
+    list-style-type: none;
+}
+
+#reviews li {
+    margin: 1rem 0;
+}
+
+#written-reviews {
+    list-style-type: none;
+}
+
+#written-reviews li {
+    margin: 1rem 0;
+}
+
+#review-buttons{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    width: fit-content;
+    margin: 1rem auto;
+}
+
+#review-form {
+    border: none;
+    line-height: 3rem;
+}
+
+/*** Message Box Styling ***/
+.messages {
+    background-color: #F3F8F2;
+    padding: 1rem 1rem;
+}
+
+.popup {
+    font-family: "urbanist", sans-serif;
+    font-weight: 600;
+}
+
+#logout-confirmation {
+    line-height: 3rem;
+    padding: 1rem 0;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+

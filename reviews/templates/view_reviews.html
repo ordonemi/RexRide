@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Reviews</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navigation.html' %}
+    {% include 'messages.html' %}
+    <div class="content">
+    <h1>Reviews for {{ reviewed_user.name }}</h1>
+    <ul id="reviews">
+        {% for review in reviews %}
+            <li>
+                <strong>{{ review.reviewer.name }}</strong>: {{ review.rating }}/5
+                <p>{{ review.comment }}</p>
+                <small>Ride: {{ review.ride.title }}</small>
+                <small>Reviewed on: {{ review.created_at|date:"F j, Y, g:i a" }}</small>
+            </li>
+        {% empty %}
+            <p>No reviews available for this user.</p>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'view_trip_history' %}" class="btn">Back to Trip History</a>
+    </div>
+</body>
+</html>

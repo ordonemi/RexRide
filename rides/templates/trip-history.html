@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip History</title>
+    <style>
+        .dropdown {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navigation.html' %}
+    {% include 'messages.html' %}
+    <div class="content">
+    <h1>Trip History</h1>
+
+    <!-- Section for trips as Passenger -->
+    <h2>Trips as Passenger</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Departure City</th>
+                <th>Destination City</th>
+                <th>Trip Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trip in trip_history_passenger %}
+            <tr>
+                <td>{{ trip.post.departure_city.name }}</td>
+                <td>{{ trip.post.destination_city.name }}</td>
+                <td>{{ trip.trip_date }}</td>
+                <td>{{ trip.status }}</td>
+                <td>
+                    <a href="{% url 'add_review' trip.post.id trip.post.driver.id %}" class="btn">Review Driver</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No trips as a passenger available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Section for trips as Driver -->
+    <h2>Trips as Driver</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Departure City</th>
+                <th>Destination City</th>
+                <th>Trip Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trip in trip_history_driver %}
+            <tr>
+                <td>{{ trip.post.departure_city.name }}</td>
+                <td>{{ trip.post.destination_city.name }}</td>
+                <td>{{ trip.trip_date }}</td>
+                <td>{{ trip.status }}</td>
+                <td>
+                    <button class="btn" onclick="toggleDropdown('dropdown-{{ trip.post.id }}')">View Passengers</button>
+                    <div id="dropdown-{{ trip.post.id }}" class="dropdown">
+                        <ul>
+                            {% for passenger in trip.post.triphistory_set.all %}
+                            {% if passenger.role == "Passenger" and passenger.is_approved %}
+                            <li>
+                                {{ passenger.user.name }}
+                                <a href="{% url 'add_review' trip.post.id passenger.user.id %}" class="btn">Review Driver</a>
+                            </li>
+                            {% endif %}
+                            {% empty %}
+                            <li>No passengers for this ride.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No trips as a driver available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    <script>
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            if (dropdown.style.display === "none" || dropdown.style.display === "") {
+                dropdown.style.display = "block";
+            } else {
+                dropdown.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

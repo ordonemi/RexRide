@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ride Details</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script>
+        function confirmSignup() {
+            const userConfirmed = confirm("Would you like to sign up for this ride?");
+            if (userConfirmed) {
+                
+                window.location.href = "{% url 'book_ride' ride.id %}";
+            }
+        }
+    </script>
+</head>
+<body>
+    {% include 'navigation.html' %}
+    {% include 'messages.html' %}
+    <div class="content">
+        <h1>Ride Details</h1>
+        <div id="ride-details">
+        <p>
+            <strong>Driver:</strong> {{ ride.driver.name }}
+            <a href="{% url 'view_reviews' ride.driver.id %}" class="btn">View Driver Reviews</a>
+        </p>
+        <p><strong>Departure City:</strong> {{ ride.departure_city.name }}</p>
+        <p><strong>Destination City:</strong> {{ ride.destination_city.name }}</p>
+        <p><strong>Details:</strong> {{ ride.details }}</p>
+        <p><strong>Departure Time:</strong> {{ ride.departure_time }}</p>
+        <p><strong>Available Seats:</strong> {{ ride.available_seats }}</p>
+        <button onclick="confirmSignup()" class="btn">Sign Up for Ride</button>
+        <a href="{% url 'view_all_rides' %}" class="btn">Back to All Rides</a>
+    </div>
+    </div>
+</body>
+</html>

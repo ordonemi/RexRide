@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navigation.html' %}
+    {% include 'messages.html' %}
+    <div class="content">
+        <h1>Welcome, {{ user.name}}!</h1>
+        <h2>Don't know where to start? Here's all the information you need.</h1>
+        
+        <div id="home-grid">
+            <div>
+                <h2>Post a Ride</h2>
+                <p>
+                Have extra seats on your next trip? Share your route and help someone get where they’re going.
+                </p>
+                <p><strong>How to Use:</strong></p>
+                <ul>
+                <li>Click “Post a Ride” in the navigation bar.</li>
+                <li>Fill in trip details: departure city, destination, time, date, and seats available.</li>
+                <li>Add any special notes like pickup point or preferences.</li>
+                <li>Submit and wait for ride requests from passengers.</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Search for a Ride</h2>
+                <p>
+                Need a ride somewhere? Quickly find drivers headed your way.
+                </p>
+                <p><strong>How to Use:</strong></p>
+                <ul>
+                <li>Click “Search for a Ride” in the navigation bar.</li>
+                <li>Filter by departure city, destination, and date of trip.</li>
+                <li>Send a booking request to your preferred ride.</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Manage Booking Requests</h2>
+                <p>
+                Keep track of who’s joining your ride and when the ride is complete.
+                </p>
+                <p><strong>How to Use:</strong></p>
+                <ul>
+                <li>Navigate to “Manage Booking Requests.”</li>
+                <li>As a driver, view and respond to incoming requests.</li>
+                <li>Once trip has been completed, the driver can mark the trip as completed.</li>
+                </ul>
+            </div>
+            <div>
+                <h2>View Trip History</h2>
+                <p>
+                Track your rides and stay organized.
+                </p>
+                <p><strong>How to Use:</strong></p>
+                <ul>
+                <li>Go to “Trip History.”</li>
+                <li>See your past rides as a driver or passenger.</li>
+                <li>Review trip details and participants.</li>
+                <li>Rate your experience with drivers or passengers.</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Profile</h2>
+                <p>
+                Manage your account as well as reviews you've written and received.
+                </p>
+                <p><strong>How to Use:</strong></p>
+                <ul>
+                <li>Click “Profile” to update your info and picture.</li>
+                <li>View your reviews and trip ratings.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

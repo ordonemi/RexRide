@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navigation.html' %}
+    <div class="content"> 
+    <h1>Profile</h1>
+    <div id="profile-info">
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Last Login:</strong> {{ user.last_login|date:"M d, Y H:i" }}</p>
+        <p><strong>Account Created:</strong> {{ user.created_at|date:"M d, Y H:i" }}</p>
+        <p><strong>Verified:</strong> {% if user.is_verified %}Yes{% else %}No{% endif %}</p>
+        {% if user.profile_picture %}
+        <p><strong>Profile Picture:</strong></p>
+        <img src="{{ user.profile_picture.url }}" alt="Profile Picture" width="150" height="150">
+        {% else %}
+        <p><strong>Profile Picture:</strong> Not uploaded</p>
+        {% endif %}
+    </div>
+
+    <div id="user-actions">
+        <a href="{% url 'view_reviews' user.id %}" class="btn">View Reviews Received</a>
+        <a href="{% url 'view_written_reviews' %}" class="btn">View Reviews Written</a>
+        <a href="{% url 'logout' %}" class="btn">Logout</a>
+    </div>
+    </div>
+</body>
+</html>
